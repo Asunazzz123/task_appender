@@ -60,137 +60,137 @@
 ## 任务明细
 
 - **T-0001** [进行中/长期] 学习 KVCache 分布式推理调度
-  截止：2026-05-19；完成：-；优先级：1；标签：`kvcache` `inference` `scheduling`
+  截止：2026-05-19；提醒：-；完成：-；优先级：1；标签：`kvcache` `inference` `scheduling`
   子任务：T-0002, T-0003
 - **T-0018** [进行中/长期] 学习 KVCache 调度
-  截止：-；完成：-；优先级：1；标签：`kvcache` `scheduling` `inference`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `scheduling` `inference`
   子任务：T-0001
 - **T-0020** [进行中/长期] llm推理
-  截止：-；完成：-；优先级：1；标签：`llm` `inference`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`llm` `inference`
   子任务：T-0018
 - **T-0022** [进行中/长期] 写 MuP 博客
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   子任务：T-0023, T-0024, T-0025, T-0026, T-0027, T-0028
 - **T-0003** [被阻塞/短期] 学习 UCX
-  截止：2026-05-12；完成：-；优先级：2；标签：`ucx` `rdma` `transport`
+  截止：2026-05-12；提醒：-；完成：-；优先级：2；标签：`ucx` `rdma` `transport`
 - **T-0004** [待办/短期] 学习 P/D 分离的基础
-  截止：2026-05-03；完成：-；优先级：1；标签：`pd-disaggregation` `inference` `foundation`
+  截止：2026-05-03；提醒：-；完成：-；优先级：1；标签：`pd-disaggregation` `inference` `foundation`
 - **T-0002** [待办/短期] 学习 Mooncake
-  截止：2026-05-10；完成：-；优先级：1；标签：`mooncake` `kvcache` `pd-disaggregation`
+  截止：2026-05-10；提醒：-；完成：-；优先级：1；标签：`mooncake` `kvcache` `pd-disaggregation`
   前置依赖：T-0004
 - **T-0005** [待办/长期] 学习 nccl-gin
-  截止：-；完成：-；优先级：3；标签：`nccl-gin`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`nccl-gin`
   子任务：T-0006, T-0007
 - **T-0006** [待办/短期] 学习 nccl-gin 具体源码
-  截止：-；完成：-；优先级：3；标签：`nccl-gin`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`nccl-gin`
 - **T-0007** [待办/短期] 学习 nccl-gin 原理
-  截止：-；完成：-；优先级：3；标签：`nccl-gin`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`nccl-gin`
 - **T-0008** [待办/长期] 学习 Megatron 训练框架
-  截止：-；完成：-；优先级：2；标签：`megatron` `distributed-training`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`megatron` `distributed-training`
   子任务：T-0009, T-0010, T-0011, T-0012
 - **T-0009** [待办/短期] 梳理 Megatron 训练架构与并行基础
-  截止：-；完成：-；优先级：2；标签：`megatron` `distributed-training`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`megatron` `distributed-training`
 - **T-0010** [待办/短期] 跑通 Megatron 小规模训练样例
-  截止：-；完成：-；优先级：2；标签：`megatron` `experiment`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`megatron` `experiment`
   前置依赖：T-0009
 - **T-0011** [待办/短期] 阅读 Megatron 模型、并行与优化器源码主线
-  截止：-；完成：-；优先级：2；标签：`megatron` `source-reading`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`megatron` `source-reading`
   前置依赖：T-0010
 - **T-0012** [待办/里程碑] 完成一次 Megatron 训练调优复盘
-  截止：-；完成：-；优先级：2；标签：`megatron` `performance`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`megatron` `performance`
   前置依赖：T-0011
 - **T-0013** [待办/长期] 维护 task_appender 功能 TODO List
-  截止：-；完成：-；优先级：1；标签：`task-appender` `feature`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`task-appender` `feature`
   子任务：T-0014, T-0015, T-0016, T-0017, T-0030, T-0031, T-0032, T-0033, T-0034
 - **T-0014** [待办/短期] 实现每日任务创建与展示
-  截止：-；完成：-；优先级：1；标签：`task-appender` `daily` `feature`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`task-appender` `daily` `feature`
 - **T-0015** [待办/短期] 支持每日任务分时提醒
-  截止：-；完成：-；优先级：1；标签：`task-appender` `daily` `reminder`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`task-appender` `daily` `reminder`
   前置依赖：T-0014
 - **T-0016** [待办/短期] 支持 DDL 日期手动修改
-  截止：-；完成：-；优先级：1；标签：`task-appender` `ddl` `feature`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`task-appender` `ddl` `feature`
 - **T-0017** [待办/短期] 支持 DDL 日期自动修改策略
-  截止：-；完成：-；优先级：1；标签：`task-appender` `ddl` `automation`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`task-appender` `ddl` `automation`
   前置依赖：T-0016
 - **T-0025** [待办/短期] MuP 之上 1
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   前置依赖：T-0024
 - **T-0026** [待办/短期] MuP 之上 2
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   前置依赖：T-0025
 - **T-0027** [待办/短期] MuP 之上 3
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   前置依赖：T-0026
 - **T-0028** [待办/短期] MuP 之上 4
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   前置依赖：T-0027
 - **T-0029** [待办/短期] 编写 UCX 源码解读博客
-  截止：-；完成：-；优先级：2；标签：`blog` `ucx` `source-reading`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`blog` `ucx` `source-reading`
   前置依赖：T-0003
 - **T-0035** [待办/短期] 支持个人博客中英文双语
-  截止：-；完成：-；优先级：2；标签：`blog` `i18n` `bilingual`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`blog` `i18n` `bilingual`
 - **T-0036** [待办/长期] 学习推理框架里面 KVCache 的寻址
-  截止：-；完成：-；优先级：1；标签：`kvcache` `inference` `attention` `serving`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `inference` `attention` `serving`
   子任务：T-0037, T-0038, T-0039, T-0040, T-0041, T-0042
 - **T-0038** [待办/短期] 学习 RadixAttention
-  截止：-；完成：-；优先级：1；标签：`kvcache` `radixattention` `attention`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `radixattention` `attention`
 - **T-0039** [待办/短期] 学习 pico-vLLM 的 PA+RA
-  截止：-；完成：-；优先级：1；标签：`kvcache` `pico-vllm` `pagedattention` `radixattention`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `pico-vllm` `pagedattention` `radixattention`
   前置依赖：T-0037, T-0038
 - **T-0040** [待办/短期] 学习正统 vLLM 的 PagedAttention
-  截止：-；完成：-；优先级：1；标签：`kvcache` `vllm` `pagedattention`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `vllm` `pagedattention`
   前置依赖：T-0037
 - **T-0041** [待办/短期] 学习正统 SGLang 的 RadixAttention
-  截止：-；完成：-；优先级：1；标签：`kvcache` `sglang` `radixattention`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`kvcache` `sglang` `radixattention`
   前置依赖：T-0038
 - **T-0042** [待办/短期] 学习其他不成熟但开放的 KVCache 管理方案
-  截止：-；完成：-；优先级：2；标签：`kvcache` `serving` `research` `open-source`
+  截止：-；提醒：-；完成：-；优先级：2；标签：`kvcache` `serving` `research` `open-source`
   前置依赖：T-0039, T-0040, T-0041
 - **T-0043** [待办/长期] Pico-vLLM开发
-  截止：-；完成：-；优先级：1；标签：`pico-vllm` `inference` `development`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`pico-vllm` `inference` `development`
   子任务：T-0044, T-0045, T-0046
 - **T-0045** [待办/短期] Pico-vLLM profiling 和 memtrack 插件支持
-  截止：-；完成：-；优先级：1；标签：`pico-vllm` `profiling` `memtrack` `plugin`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`pico-vllm` `profiling` `memtrack` `plugin`
 - **T-0046** [待办/短期] Pico-vLLM blockManager 重构
-  截止：-；完成：-；优先级：1；标签：`pico-vllm` `block-manager` `storage` `mla` `attention`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`pico-vllm` `block-manager` `storage` `mla` `attention`
 - **T-0047** [待办/长期] 强化学习框架攻关
-  截止：-；完成：-；优先级：1；标签：`reinforcement-learning` `rl-framework` `post-training`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`reinforcement-learning` `rl-framework` `post-training`
   子任务：T-0048, T-0049, T-0050
 - **T-0048** [待办/短期] 学习 LLM 后训练强化学习流程
-  截止：-；完成：-；优先级：1；标签：`reinforcement-learning` `llm` `post-training`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`reinforcement-learning` `llm` `post-training`
 - **T-0049** [待办/短期] 学习 verl 框架大致骨架
-  截止：-；完成：-；优先级：1；标签：`reinforcement-learning` `verl` `framework`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`reinforcement-learning` `verl` `framework`
   前置依赖：T-0048
 - **T-0050** [待办/短期] 实现自研 RL 框架原型
-  截止：-；完成：-；优先级：1；标签：`reinforcement-learning` `femotron` `pico-vllm` `training` `inference`
+  截止：-；提醒：-；完成：-；优先级：1；标签：`reinforcement-learning` `femotron` `pico-vllm` `training` `inference`
   前置依赖：T-0049
 - **T-0030** [已完成/短期] 实现 v0.1 已完成任务收获提取
-  截止：2026-05-05；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `analytics` `release`
+  截止：2026-05-05；提醒：-；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `analytics` `release`
 - **T-0031** [已完成/短期] 实现 v0.1 成长计分板和经验等级导出
-  截止：2026-05-05；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `scoreboard` `release`
+  截止：2026-05-05；提醒：-；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `scoreboard` `release`
   前置依赖：T-0030
 - **T-0032** [已完成/里程碑] 发布 task_appender v0.1
-  截止：2026-05-05；完成：2026-05-05；优先级：3；标签：`task-appender` `release`
+  截止：2026-05-05；提醒：-；完成：2026-05-05；优先级：3；标签：`task-appender` `release`
   前置依赖：T-0030, T-0031
 - **T-0033** [已完成/短期] 实现 v0.1.0rc1 技能树和段位标志补丁
-  截止：2026-05-05；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `scoreboard` `release`
+  截止：2026-05-05；提醒：-；完成：2026-05-05；优先级：3；标签：`task-appender` `feature` `scoreboard` `release`
   前置依赖：T-0032
 - **T-0034** [已完成/里程碑] 发布 task_appender v0.1.0rc1
-  截止：2026-05-05；完成：2026-05-05；优先级：3；标签：`task-appender` `release`
+  截止：2026-05-05；提醒：-；完成：2026-05-05；优先级：3；标签：`task-appender` `release`
   前置依赖：T-0033
 - **T-0021** [已完成/长期] 搭建个人博客
-  截止：-；完成：-；优先级：3；标签：`blog`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog`
 - **T-0023** [已完成/短期] 初探 MuP
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
 - **T-0024** [已完成/短期] 高阶 MuP
-  截止：-；完成：-；优先级：3；标签：`blog` `mup`
+  截止：-；提醒：-；完成：-；优先级：3；标签：`blog` `mup`
   前置依赖：T-0023
 - **T-0037** [已完成/短期] 学习 PagedAttention
-  截止：-；完成：2026-05-14；优先级：1；标签：`kvcache` `pagedattention` `attention`
+  截止：-；提醒：-；完成：2026-05-14；优先级：1；标签：`kvcache` `pagedattention` `attention`
 - **T-0044** [已完成/短期] Pico-vLLM CPU 推理支持
-  截止：-；完成：2026-05-13；优先级：1；标签：`pico-vllm` `cpu` `inference`
+  截止：-；提醒：-；完成：2026-05-13；优先级：1；标签：`pico-vllm` `cpu` `inference`
 - **T-0051** [已完成/长期] 学习模型训练动力学-SMD
-  截止：-；完成：2026-05-17；优先级：2；标签：`theory` `training-dynamics` `smd`
+  截止：-；提醒：-；完成：2026-05-17；优先级：2；标签：`theory` `training-dynamics` `smd`
 
 ## 等级谱注脚
 
