@@ -106,6 +106,14 @@ exit "$(cat {shlex.quote(str(self.open_status))})"
         with self.assertRaisesRegex(NotificationError, "initialize"):
             self.make_notifier().send("Title", "Message")
 
+    def test_send_omits_sound_file_when_sound_is_empty(self):
+        notifier = self.make_notifier()
+        notifier.setup()
+
+        notifier.send("Title", "Message")
+
+        self.assertFalse((self.snapshot / "sound.txt").exists())
+
     def test_open_failure_is_propagated(self):
         notifier = self.make_notifier()
         notifier.setup()
