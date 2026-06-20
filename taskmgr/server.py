@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import json
 import ipaddress
+import json
 import re
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
@@ -65,12 +65,6 @@ class TaskGraphHandler(BaseHTTPRequestHandler):
             if path == "/api/notifications/status":
                 self.send_json(notification_status(self.server.notifier))
                 return
-            if path == "/api/settings/notifications":
-                self.send_json({"notifications": get_notification_settings(self.server.db_path)})
-                return
-            if path == "/api/notifications/status":
-                self.send_json(notification_status(self.server.notifier))
-                return
             if path == "/api/health":
                 self.send_json({"ok": True})
                 return
@@ -105,33 +99,6 @@ class TaskGraphHandler(BaseHTTPRequestHandler):
                             get_notification_settings(self.server.db_path),
                         )
                     )
-                return
-            if path == "/api/notifications/setup":
-                if not is_loopback_client(self.client_address[0]):
-                    self.send_json({"error": "notification setup is limited to localhost"}, status=403)
-                    return
-                self.send_json(setup_notification(self.server.notifier))
-                return
-            if path == "/api/notifications/test":
-                if not is_loopback_client(self.client_address[0]):
-                    self.send_json({"error": "test notifications are limited to localhost"}, status=403)
-                    return
-                settings = get_notification_settings(self.server.db_path)
-                self.send_json(test_notification(self.server.notifier, settings))
-                return
-            self.send_error(404, "not found")
-        except TaskError as exc:
-            self.send_json({"error": str(exc)}, status=400)
-        except Exception as exc:
-            self.send_json({"error": str(exc)}, status=500)
-
-    def do_PUT(self) -> None:
-        path = urlparse(self.path).path
-        try:
-            if path == "/api/settings/notifications":
-                payload = self.read_json()
-                settings = put_notification_settings(self.server.db_path, payload)
-                self.send_json({"notifications": settings})
                 return
             self.send_error(404, "not found")
         except TaskError as exc:
