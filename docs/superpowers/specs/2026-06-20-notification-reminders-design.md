@@ -34,7 +34,8 @@ The Web UI and CLI write task reminder rules to the task store. Notification-wid
 
 The responsibilities are divided as follows:
 
-- `taskmgr/reminders.py`: reminder-rule validation, rule parsing, occurrence calculation, active-status filtering, catch-up-window filtering, retry eligibility, delivery keys, and worker lifecycle.
+- `taskmgr/reminder_rules.py`: cycle-free reminder-rule normalization, validation, parsing, and display formatting.
+- `taskmgr/reminders.py`: occurrence calculation, active-status filtering, catch-up-window filtering, retry eligibility, delivery keys, scan execution, and worker lifecycle.
 - `taskmgr/notifier.py`: build and launch `Notification Agent.app`, submit UTF-8 notification requests, and report only verifiable process outcomes.
 - `taskmgr/settings.py`: defaults, validation, and atomic persistence for notification settings and the delivery ledger.
 - `taskmgr/server.py`: start and stop the reminder worker with the HTTP server, expose notification settings/setup/test endpoints, and accept reminder fields in task mutations.
