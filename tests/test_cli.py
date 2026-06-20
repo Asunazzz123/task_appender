@@ -37,6 +37,8 @@ class CliTests(unittest.TestCase):
                 "T-0001",
                 "--due",
                 "2026-05-01",
+                "--reminder",
+                "1d@09:00",
             )
             self.assertEqual(code, 0, err)
             self.assertTrue((Path(tmpdir) / "exports" / "scoreboard.html").exists())
@@ -62,6 +64,14 @@ class CliTests(unittest.TestCase):
             self.assertIn("new-task", html)
             self.assertIn("task-context-menu", html)
             self.assertIn("学习 Triton", html)
+            self.assertIn("提前 1 天 09:00", html)
+
+            markdown_out = Path(tmpdir) / "tasks.md"
+            code, _, err = self.run_cli(
+                "--db", str(db), "render", "--format", "markdown", "--output", str(markdown_out)
+            )
+            self.assertEqual(code, 0, err)
+            self.assertIn("提前 1 天 09:00", markdown_out.read_text(encoding="utf-8"))
 
             scoreboard_out = Path(tmpdir) / "scoreboard.html"
             code, _, err = self.run_cli("--db", str(db), "render", "--format", "scoreboard", "--output", str(scoreboard_out))
@@ -108,6 +118,83 @@ class CliTests(unittest.TestCase):
             self.assertIn("最近收获", stdout)
             self.assertIn("星核主干", stdout)
             self.assertIn("等级谱", stdout)
+
+    def test_add_set_and_clear_reminders(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            db = Path(tmpdir) / "tasks.yaml"
+
+            code, _, err = self.run_cli(
+                "--db",
+                str(db),
+                "add",
+                "--kind",
+                "short",
+                "--title",
+                "交作业",
+                "--due",
+                "2026-07-04",
+                "--reminder",
+                "1d@09:00",
+                "--reminder",
+                "0d@09:00",
+            )
+
+            self.assertEqual(code, 0, err)
+            self.assertEqual(
+                tasks_by_id(load_data(db))["T-0001"]["reminders"],
+                [
+                    {"days_before": 1, "time": "09:00"},
+                    {"days_before": 0, "time": "09:00"},
+                ],
+            )
+
+            code, _, err = self.run_cli(
+                "--db",
+                str(db),
+                "reminders",
+                "set",
+                "--task",
+                "T-0001",
+                "--rule",
+                "2d@20:00",
+            )
+            self.assertEqual(code, 0, err)
+            self.assertEqual(
+                tasks_by_id(load_data(db))["T-0001"]["reminders"],
+                [{"days_before": 2, "time": "20:00"}],
+            )
+
+            code, _, err = self.run_cli(
+                "--db", str(db), "reminders", "clear", "--task", "T-0001"
+            )
+            self.assertEqual(code, 0, err)
+            self.assertEqual(tasks_by_id(load_data(db))["T-0001"]["reminders"], [])
+
+    def test_render_includes_reminder_summary(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            db = Path(tmpdir) / "tasks.yaml"
+            self.assertEqual(
+                self.run_cli(
+                    "--db",
+                    str(db),
+                    "add",
+                    "--kind",
+                    "short",
+                    "--title",
+                    "交作业",
+                    "--due",
+                    "2026-07-04",
+                    "--reminder",
+                    "1d@09:00",
+                )[0],
+                0,
+            )
+
+            markdown = (Path(tmpdir) / "exports" / "tasks.md").read_text(encoding="utf-8")
+            html = (Path(tmpdir) / "exports" / "graph.html").read_text(encoding="utf-8")
+            self.assertIn("提前 1 天 09:00", markdown)
+            self.assertIn("提前 1 天 09:00", html)
+            self.assertIn('data-reminders="', html)
 
     def test_reject_cycle(self):
         with tempfile.TemporaryDirectory() as tmpdir:

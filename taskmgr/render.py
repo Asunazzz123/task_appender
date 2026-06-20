@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import html
+import json
 from datetime import date
 from pathlib import Path
 from typing import Any
 
 from .analytics import build_progress, format_skill_tree_cli
 from .model import task_sort_key
+from .reminder_rules import format_reminders
 
 
 KIND_LABELS = {
@@ -142,7 +144,11 @@ def render_markdown(data: dict[str, Any]) -> str:
         kind = KIND_LABELS.get(task.get("kind"), task.get("kind"))
         lines.append(f"- **{task['id']}** [{status}/{kind}] {task['title']}")
         completed_at = task.get("completed_at") or "-"
-        lines.append(f"  截止：{due}；完成：{completed_at}；优先级：{task.get('priority', 3)}；标签：{tags}")
+        reminder_summary = format_reminders(task.get("reminders"))
+        lines.append(
+            f"  截止：{due}；提醒：{reminder_summary}；完成：{completed_at}；"
+            f"优先级：{task.get('priority', 3)}；标签：{tags}"
+        )
         if task.get("depends_on"):
             lines.append(f"  前置依赖：{', '.join(task['depends_on'])}")
         if task.get("children"):
@@ -651,7 +657,7 @@ def render_html(data: dict[str, Any], *, live_api: bool = False) -> str:
     <h2>任务明细</h2>
     <table>
       <thead>
-        <tr><th>ID</th><th>状态</th><th>类型</th><th>截止</th><th>标题</th><th>前置依赖</th><th>子任务</th><th>标签</th></tr>
+        <tr><th>ID</th><th>状态</th><th>类型</th><th>截止</th><th>提醒</th><th>标题</th><th>前置依赖</th><th>子任务</th><th>标签</th></tr>
       </thead>
       <tbody>
 {task_rows}
@@ -1778,12 +1784,14 @@ def render_svg_node(task: dict[str, Any], x: int, y: int, width: int, height: in
     recurrence_time = ""
     if isinstance(task.get("recurrence"), dict):
         recurrence_time = str(task["recurrence"].get("time") or "")
+    reminders_json = json.dumps(task.get("reminders", []), ensure_ascii=False, separators=(",", ":"))
     text_parts = [
         f'          <g id="{svg_escape(safe_node(task["id"]))}" class="task-node" tabindex="0" role="button" aria-label="{svg_escape(task["id"] + " " + title)}" '
         f'data-task-id="{svg_escape(task["id"])}" data-title="{svg_escape(title)}" data-kind="{svg_escape(str(task.get("kind", "")))}" '
         f'data-kind-label="{svg_escape(str(kind))}" data-status="{svg_escape(str(task.get("status", "")))}" data-status-label="{svg_escape(str(status))}" '
         f'data-due="{svg_escape(str(task.get("due_at") or "-"))}" data-priority="{svg_escape(str(task.get("priority", 3)))}" '
-        f'data-time="{svg_escape(recurrence_time)}" data-tags="{svg_escape(all_tags)}" data-notes="{svg_escape(notes)}" '
+        f'data-time="{svg_escape(recurrence_time)}" data-reminders="{svg_escape(reminders_json)}" '
+        f'data-tags="{svg_escape(all_tags)}" data-notes="{svg_escape(notes)}" '
         f'data-parent="{svg_escape(str(task.get("parent") or "-"))}" data-deps="{svg_escape(dependencies or "-")}" data-children="{svg_escape(children or "-")}" '
         f'data-default-x="{x}" data-default-y="{y}" data-x="{x}" data-y="{y}" transform="translate({x} {y})">',
         f'            <rect class="node-card" x="0" y="0" width="{width}" height="{height}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2"/>',
@@ -1814,12 +1822,14 @@ def svg_node_colors(task: dict[str, Any]) -> tuple[str, str]:
 
 def render_html_task_row(task: dict[str, Any]) -> str:
     tags = " ".join(f"<code>{html.escape(str(tag))}</code>" for tag in task.get("tags", [])) or "-"
+    reminders = html.escape(format_reminders(task.get("reminders")))
     return (
         "        <tr>"
         f"<td><code>{html.escape(str(task.get('id', '')))}</code></td>"
         f"<td>{html.escape(str(STATUS_LABELS.get(task.get('status'), task.get('status'))))}</td>"
         f"<td>{html.escape(str(KIND_LABELS.get(task.get('kind'), task.get('kind'))))}</td>"
         f"<td>{html.escape(str(task.get('due_at') or '-'))}</td>"
+        f"<td>{reminders}</td>"
         f"<td>{html.escape(str(task.get('title', '')))}</td>"
         f"<td>{html.escape(', '.join(task.get('depends_on', [])) or '-')}</td>"
         f"<td>{html.escape(', '.join(task.get('children', [])) or '-')}</td>"
